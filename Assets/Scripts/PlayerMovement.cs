@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerState
+{
+    walk,
+    attack,
+    interact
+}
+
 public class PlayerMovement : MonoBehaviour
 {
-
+    public PlayerState currentState;
     public float speed;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -16,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         animator.SetFloat("LastDirection", -1);
+        currentState = PlayerState.walk;
     }
 
     // Update is called once per frame
@@ -28,8 +36,26 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
 
-        UpdateAnimationAndMove();
+        if(Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        {
+            StartCoroutine(AttackCo());
+        }
+        
+        else if (currentState == PlayerState.walk)
+        {
+            UpdateAnimationAndMove();
 
+        }
+    }
+
+    private IEnumerator AttackCo()
+    {
+        animator.SetBool("attacking", true);
+        currentState = PlayerState.attack;
+        yield return null;
+        animator.SetBool("attacking", false);
+        yield return new WaitForSeconds(.3f); //Mi animación es mas corta
+        currentState = PlayerState.walk;
     }
 
     void UpdateAnimationAndMove()
