@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
+    private SpriteRenderer mySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         animator.SetFloat("LastDirection", -1);
         currentState = PlayerState.walk;
     }
@@ -30,15 +32,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         change = Vector3.zero;
-        //change.x = Input.GetAxis("Horizontal");   //Analog Value
-        //change.y = Input.GetAxis("Vertical");     //Analog Value
-
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
 
         if(Input.GetButtonDown("attack") && currentState != PlayerState.attack)
         {
-            StartCoroutine(AttackCo());
+            //StartCoroutine(AttackCo());
         }
         
         else if (currentState == PlayerState.walk)
@@ -46,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
             UpdateAnimationAndMove();
 
         }
+
+        flip_sprite();
+
     }
 
     private IEnumerator AttackCo()
@@ -58,25 +60,31 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.walk;
     }
 
+    void flip_sprite()
+    {
+        //Change animation when player looks left or right
+        Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 mouse = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+
+        if (mouse.x < playerScreenPoint.x)
+        {
+            print("Mouse is on left side of screen.");
+            mySpriteRenderer.flipX = true;  // flip the sprite
+        }
+        else
+        {
+            print("Mouse is on right side of screen.");
+            mySpriteRenderer.flipX = false;  // flip the sprite
+        }
+    }
+
     void UpdateAnimationAndMove()
     {
         if (change != Vector3.zero)
         {
-            if (change.x == 0.0) //If we're moving UP or DOWN
-            {
-                animator.SetBool("UpDown", true); //We're facing UP or Down
-                animator.SetBool("moving", true);
-            }
-            else //We're not moving up or down
-            {
-                animator.SetFloat("moveX", change.x);
-                animator.SetFloat("moveY", change.y);
-                animator.SetBool("moving", true);
-                animator.SetFloat("LastDirection", change.x);
-                animator.SetBool("UpDown", false);
-
-            }
-
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("moving", true);
             MoveCharacter();
         }
         else 
