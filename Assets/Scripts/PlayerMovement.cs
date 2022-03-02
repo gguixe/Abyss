@@ -35,17 +35,12 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
 
-        if(Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        if(Input.GetButtonDown("Fire1"))
         {
-            //StartCoroutine(AttackCo());
+            StartCoroutine(AttackCo());
         }
-        
-        else if (currentState == PlayerState.walk)
-        {
-            UpdateAnimationAndMove();
-
-        }
-
+       
+        UpdateAnimationAndMove();
         flip_sprite();
 
     }
@@ -56,8 +51,8 @@ public class PlayerMovement : MonoBehaviour
         currentState = PlayerState.attack;
         yield return null;
         animator.SetBool("attacking", false);
-        yield return new WaitForSeconds(.3f); //Mi animación es mas corta
-        currentState = PlayerState.walk;
+        //yield return new WaitForSeconds(.3f); //Mi animación es mas corta
+        //currentState = PlayerState.walk;
     }
 
     void flip_sprite()
@@ -68,13 +63,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (mouse.x < playerScreenPoint.x)
         {
-            print("Mouse is on left side of screen.");
+            //print("Mouse is on left side of screen.");
             mySpriteRenderer.flipX = true;  // flip the sprite
+            animator.SetFloat("side", 1);
         }
         else
         {
-            print("Mouse is on right side of screen.");
+            //print("Mouse is on right side of screen.");
             mySpriteRenderer.flipX = false;  // flip the sprite
+            animator.SetFloat("side", 0);
         }
     }
 
