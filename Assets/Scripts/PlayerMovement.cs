@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer mySpriteRenderer;
 
     public GameObject weapon;
-    public SpriteRenderer weapon_sprite;
+    private SpriteRenderer weapon_sprite;
 
     //public GameObject hitbox_right;
     //public GameObject hitbox_left; //Hitboxes activated in animation
@@ -33,6 +33,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("LastDirection", -1);
         currentState = PlayerState.attack;
         weapon_sprite = weapon.GetComponent<SpriteRenderer>();
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", 0);
     }
 
     // Update is called once per frame
@@ -116,6 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveCharacter()
     {
+        change.Normalize();
         myRigidbody.MovePosition(transform.position + change * speed * Time.fixedDeltaTime);
     }
 }

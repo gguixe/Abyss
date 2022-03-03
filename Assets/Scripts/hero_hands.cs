@@ -30,23 +30,11 @@ public class hero_hands : MonoBehaviour
         }
         else //Angulos de la izquierda
         {
-            transform.rotation = Quaternion.AngleAxis(180-angle, Vector3.forward);
-            //right_hand.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-            right_hand.transform.rotation = Quaternion.Inverse(transform.rotation);
+            transform.rotation = Quaternion.AngleAxis(180+angle, Vector3.forward);
+            //right_hand.transform.rotation = Quaternion.Inverse(right_hand.transform.rotation); //does nothing?
         }
-
-        //Attack();
 
         //print(angle);
 
     }
-
-    //void Attack()
-    //{
-     //   if (Input.GetButtonDown("Fire1"))
-      //  {
-      //      print("I'm attacking");
-            //right_hand.transform.position = new Vector3(right_hand.transform.position.x + 1, right_hand.transform.position.y, right_hand.transform.position.z); //offset position
-      //  }
-    //}
 }
