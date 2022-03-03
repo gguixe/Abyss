@@ -12226,6 +12226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   speed: 5
+  weapon: {fileID: 590010704}
+  weapon_sprite: {fileID: 0}
 --- !u!95 &1688690176
 Animator:
   serializedVersion: 3

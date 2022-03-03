@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum PlayerState
 {
-    walk,
+    holster,
     attack,
     interact
 }
@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer mySpriteRenderer;
 
+    public GameObject weapon;
+    public SpriteRenderer weapon_sprite;
+
     //public GameObject hitbox_right;
     //public GameObject hitbox_left; //Hitboxes activated in animation
 
@@ -28,7 +31,8 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         animator.SetFloat("LastDirection", -1);
-        currentState = PlayerState.walk;
+        currentState = PlayerState.attack;
+        weapon_sprite = weapon.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -38,13 +42,28 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
 
-        if(Input.GetButtonDown("Fire1"))
+        UpdateAnimationAndMove();
+        flip_sprite();
+
+        if (Input.GetButtonDown("Attack") && currentState == PlayerState.attack)
         {
             StartCoroutine(AttackCo());
         }
-       
-        UpdateAnimationAndMove();
-        flip_sprite();
+
+        if (Input.GetButtonDown("Holster") || (Input.GetButtonDown("Fire1") && currentState == PlayerState.holster))
+        {
+            if(currentState == PlayerState.holster)
+            {
+                currentState = PlayerState.attack;
+                weapon.SetActive(true);
+            }
+            else
+            {
+                currentState = PlayerState.holster;
+                weapon.SetActive(false);
+            }
+        }
+
 
     }
 
@@ -69,12 +88,14 @@ public class PlayerMovement : MonoBehaviour
             //print("Mouse is on left side of screen.");
             mySpriteRenderer.flipX = true;  // flip the sprite
             animator.SetFloat("side", 1);
+            weapon_sprite.sortingOrder = 0;
         }
         else
         {
             //print("Mouse is on right side of screen.");
             mySpriteRenderer.flipX = false;  // flip the sprite
             animator.SetFloat("side", 0);
+            weapon_sprite.sortingOrder = 2;
         }
     }
 
