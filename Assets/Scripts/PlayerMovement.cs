@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer mySpriteRenderer;
 
+    //public GameObject hitbox_right;
+    //public GameObject hitbox_left; //Hitboxes activated in animation
+
     // Start is called before the first frame update
     void Start()
     {
