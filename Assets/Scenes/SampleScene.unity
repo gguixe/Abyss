@@ -12091,7 +12091,7 @@ GameObject:
   - component: {fileID: 1688690174}
   - component: {fileID: 1688690175}
   - component: {fileID: 1688690176}
-  - component: {fileID: 1688690177}
+  - component: {fileID: 1688690178}
   m_Layer: 0
   m_Name: HERO
   m_TagString: Player
@@ -12247,32 +12247,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &1688690177
-BoxCollider2D:
+--- !u!114 &1688690178
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688690170}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.018056571, y: 0.045141697}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 1}
-    newSize: {x: 0.07, y: 0.08}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1277922, y: 1.306962}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b78f77f756ca924c9068069eb32ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2
+  knockTime: 0.4
 --- !u!1 &1771608446
 GameObject:
   m_ObjectHideFlags: 0
@@ -12289,7 +12277,7 @@ GameObject:
   - component: {fileID: 1771608452}
   m_Layer: 0
   m_Name: GOBLIN
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
