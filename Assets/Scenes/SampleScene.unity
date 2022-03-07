@@ -3027,6 +3027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502979264}
   - component: {fileID: 502979265}
+  - component: {fileID: 502979266}
   m_Layer: 0
   m_Name: hitbox_left
   m_TagString: damage
@@ -3074,6 +3075,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.79814446, y: 1.1334882}
   m_EdgeRadius: 0
+--- !u!114 &502979266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502979263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b78f77f756ca924c9068069eb32ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2
+  knockTime: 0.4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8619,6 +8634,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1184168977}
   - component: {fileID: 1184168978}
+  - component: {fileID: 1184168979}
   m_Layer: 0
   m_Name: hitbox_right
   m_TagString: damage
@@ -8666,6 +8682,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.361711, y: 1.1334882}
   m_EdgeRadius: 0
+--- !u!114 &1184168979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184168976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b78f77f756ca924c9068069eb32ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 2
+  knockTime: 0.4
 --- !u!1 &1345515707
 GameObject:
   m_ObjectHideFlags: 0
@@ -12091,7 +12121,7 @@ GameObject:
   - component: {fileID: 1688690174}
   - component: {fileID: 1688690175}
   - component: {fileID: 1688690176}
-  - component: {fileID: 1688690178}
+  - component: {fileID: 1688690177}
   m_Layer: 0
   m_Name: HERO
   m_TagString: Player
@@ -12247,20 +12277,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1688690178
-MonoBehaviour:
+--- !u!61 &1688690177
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688690170}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b78f77f756ca924c9068069eb32ca3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thrust: 2
-  knockTime: 0.4
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.010136604, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.875, y: 1}
+    newSize: {x: 0.07, y: 0.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.631721, y: 0.7972679}
+  m_EdgeRadius: 0
 --- !u!1 &1771608446
 GameObject:
   m_ObjectHideFlags: 0
@@ -12275,6 +12317,8 @@ GameObject:
   - component: {fileID: 1771608449}
   - component: {fileID: 1771608451}
   - component: {fileID: 1771608452}
+  - component: {fileID: 1771608453}
+  - component: {fileID: 1771608454}
   m_Layer: 0
   m_Name: GOBLIN
   m_TagString: enemy
@@ -12425,6 +12469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e4212b1cc17e04a9f7830891efb0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
   health: 2
   enemyName: Goblin
   baseAttack: 1
@@ -12433,6 +12478,46 @@ MonoBehaviour:
   chaseRadius: 5
   attackRadius: 1
   homePosition: {fileID: 0}
+--- !u!61 &1771608453
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771608446}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.00985086}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.875, y: 1}
+    newSize: {x: 0.07, y: 0.08}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1005058, y: 1.2474301}
+  m_EdgeRadius: 0
+--- !u!114 &1771608454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771608446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b78f77f756ca924c9068069eb32ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrust: 5
+  knockTime: 0.2
 --- !u!1 &1805517836
 GameObject:
   m_ObjectHideFlags: 0

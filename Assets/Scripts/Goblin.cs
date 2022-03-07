@@ -9,6 +9,8 @@ public class Goblin : Enemy
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
+    public Animator anim;
+    private SpriteRenderer mySpriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,8 @@ public class Goblin : Enemy
         myRigidbody = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         currentState = EnemyState.idle;
+        anim = GetComponent<Animator>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,9 +35,15 @@ public class Goblin : Enemy
             if(currentState == EnemyState.idle || currentState == EnemyState.walk && currentState != EnemyState.stagger)
             {          
                 Vector3 temp = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                changeAnim(temp - transform.position);
                 myRigidbody.MovePosition(temp);
                 ChangeState(EnemyState.walk);
+                anim.SetBool("trigger", true);
             }
+        }
+        else
+        {
+            anim.SetBool("trigger", false); //Lost chase radius
         }
     }
 
@@ -42,6 +52,20 @@ public class Goblin : Enemy
         if(currentState != newState)
         {
             currentState = newState;
+        }
+    }
+
+    private void changeAnim(Vector2 direction)
+    {      
+        if (direction.x > 0) //Derecha
+        {
+            Debug.Log("Derecha");
+            mySpriteRenderer.flipX = false;  // flip the sprite
+        }
+        else if (direction.x < 0) //Izquierda
+        {
+            Debug.Log("Izquierda");
+            mySpriteRenderer.flipX = true;  // flip the sprite
         }
     }
 }

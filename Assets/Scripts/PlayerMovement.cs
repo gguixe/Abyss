@@ -5,8 +5,10 @@ using UnityEngine;
 public enum PlayerState
 {
     holster,
+    idle,
     attack,
-    interact
+    interact,
+    stagger
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -44,10 +46,22 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
 
+        if(currentState == PlayerState.idle)
+        {
+            if (!weapon.activeSelf)
+            {
+                currentState = PlayerState.holster;
+            }
+            else
+            {
+                currentState = PlayerState.attack;
+            }
+        }
+
         UpdateAnimationAndMove();
         flip_sprite();
 
-        if (Input.GetButtonDown("Attack") && currentState == PlayerState.attack)
+        if (Input.GetButtonDown("Attack") && currentState == PlayerState.attack && currentState != PlayerState.stagger)
         {
             StartCoroutine(AttackCo());
         }
@@ -121,4 +135,20 @@ public class PlayerMovement : MonoBehaviour
         change.Normalize();
         myRigidbody.MovePosition(transform.position + change * speed * Time.fixedDeltaTime);
     }
+
+    public void Knock(float knockTime)
+    {
+        StartCoroutine(KnockCo(knockTime, currentState));
+    }
+
+    private IEnumerator KnockCo(float knockTime, PlayerState oldState)
+    {
+        if (myRigidbody != null) //check it doesn't die
+        {
+            yield return new WaitForSeconds(knockTime);
+            myRigidbody.velocity = Vector2.zero;
+            currentState = PlayerState.idle;   
+        }
+    }
+
 }
