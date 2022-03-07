@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public GameObject weapon;
     private SpriteRenderer weapon_sprite;
 
+    public FloatValue currentHealth;
+    public Signal playerHealthSignal;
+
     //public GameObject hitbox_right;
     //public GameObject hitbox_left; //Hitboxes activated in animation
 
@@ -136,12 +139,17 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody.MovePosition(transform.position + change * speed * Time.fixedDeltaTime);
     }
 
-    public void Knock(float knockTime)
+    public void Knock(float knockTime, float damage)
     {
-        StartCoroutine(KnockCo(knockTime, currentState));
+        currentHealth.initialValue -= damage;
+        if (currentHealth.initialValue > 0)
+        {
+            playerHealthSignal.Raise();
+            StartCoroutine(KnockCo(knockTime));
+        }
     }
 
-    private IEnumerator KnockCo(float knockTime, PlayerState oldState)
+    private IEnumerator KnockCo(float knockTime)
     {
         if (myRigidbody != null) //check it doesn't die
         {
