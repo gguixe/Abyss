@@ -3089,6 +3089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 2
   knockTime: 0.4
+  damage: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -8696,6 +8697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 2
   knockTime: 0.4
+  damage: 1
 --- !u!1 &1345515707
 GameObject:
   m_ObjectHideFlags: 0
@@ -12470,6 +12472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  maxHealth: {fileID: 11400000, guid: 76b9375a719ddf346a05d041c7004264, type: 2}
   health: 2
   enemyName: Goblin
   baseAttack: 1
@@ -12478,6 +12481,7 @@ MonoBehaviour:
   chaseRadius: 5
   attackRadius: 1
   homePosition: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!61 &1771608453
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12518,6 +12522,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 5
   knockTime: 0.2
+  damage: 0
 --- !u!1 &1805517836
 GameObject:
   m_ObjectHideFlags: 0
