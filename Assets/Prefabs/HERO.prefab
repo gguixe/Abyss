@@ -153,6 +153,7 @@ MonoBehaviour:
   weapon: {fileID: 4945478210089663672}
   currentHealth: {fileID: 11400000, guid: fdfd1e60545df834797becd71a33da4f, type: 2}
   playerHealthSignal: {fileID: 11400000, guid: c565dda51a3bc4e4e8bd406e29ea05b5, type: 2}
+  startingPosition: {fileID: 11400000, guid: 8cb431314425bf046a81f503ca813dc8, type: 2}
 --- !u!95 &4945478208991116264
 Animator:
   serializedVersion: 3

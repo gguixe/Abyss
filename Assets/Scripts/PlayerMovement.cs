@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public FloatValue currentHealth;
     public Signal playerHealthSignal;
+    public VectorValue startingPosition;
 
     //public GameObject hitbox_right;
     //public GameObject hitbox_left; //Hitboxes activated in animation
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         weapon_sprite = weapon.GetComponent<SpriteRenderer>();
         animator.SetFloat("moveX", 0);
         animator.SetFloat("moveY", 0);
+        transform.position = startingPosition.initialValue; //Starting position in scene
     }
 
     // Update is called once per frame
