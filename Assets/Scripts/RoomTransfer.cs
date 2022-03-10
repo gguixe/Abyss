@@ -27,7 +27,7 @@ public class RoomTransfer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player")) //If room are not squared we're going to need a vector2
+        if(other.CompareTag("Player") && !other.isTrigger) //If room are not squared we're going to need a vector2
         {
             cam.minPosition += cameraChange;
             cam.maxPosition += cameraChange;
