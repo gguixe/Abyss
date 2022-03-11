@@ -4380,6 +4380,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 958981445, guid: 84d5e6edd685e7a44afa017ab0f6324f, type: 3}
+      propertyPath: fadeWait
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 958981445, guid: 84d5e6edd685e7a44afa017ab0f6324f, type: 3}
       propertyPath: sceneToLoad
       value: SampleScene
       objectReference: {fileID: 0}

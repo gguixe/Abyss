@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.026538134, y: 0.23896313}
+  m_Offset: {x: -0.0499084, y: 0.23896313}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0169096, y: 0.65483093}
+  m_Size: {x: 0.92734575, y: 0.65483093}
   m_EdgeRadius: 0
 --- !u!114 &958981445
 MonoBehaviour:
@@ -70,4 +70,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9344fbb08454ef24885ff7fc87714680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: 
+  sceneToLoad: House_Interior
+  playerPosition: {x: 0, y: 0}
+  StoredPosition: {fileID: 11400000, guid: 8cb431314425bf046a81f503ca813dc8, type: 2}
+  fadeInPanel: {fileID: 583178236571143905, guid: cfe0b1f33af1b6143bad03d95b3fac8e,
+    type: 3}
+  fadeOutPanel: {fileID: 2530920836181120795, guid: 59185bace0d57e84582847b14e0def5b,
+    type: 3}
+  fadeWait: 0.33
