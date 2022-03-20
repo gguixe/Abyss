@@ -4712,6 +4712,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0449574cc24adb748882d13d8f5cbee0, type: 3}
+--- !u!1001 &518246875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4987479804289219114, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_Name
+      value: GOBLIN (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219114, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 87dc10252add9c74e8619708275df7fd, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -11631,6 +11705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextClue: {fileID: 265124062}
+  contextActive: 0
 --- !u!114 &4945478210679662059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11648,34 +11723,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4945478210679662058}
-        m_MethodName: Enable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &4945478210679662060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4945478210679662057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96e9352b7a57fea47be4fe823b72afce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  signal: {fileID: 11400000, guid: c8f4195ab09ac5942870d0a64d3507a8, type: 2}
-  signalEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4945478210679662058}
-        m_MethodName: Disable
+        m_MethodName: ChangeContext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11696,6 +11744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GOBLIN
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987479804289219114, guid: 87dc10252add9c74e8619708275df7fd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4987479804289219284, guid: 87dc10252add9c74e8619708275df7fd,
         type: 3}

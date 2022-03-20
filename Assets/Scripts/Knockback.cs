@@ -10,8 +10,9 @@ public class Knockback : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("Player")) //Knockback
+        if (collision.gameObject.CompareTag("enemy") || collision.gameObject.CompareTag("Player") && collision.isTrigger) //Knockback activation conditions
         {
+            if (collision.gameObject.CompareTag("enemy") && gameObject.CompareTag("enemy")) return; //If they're both enemies no interaction
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>(); 
             if(hit != null)
             {
