@@ -139,8 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1e70d86005b9ee4c8e73b3accc012ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contextOn: {fileID: 11400000, guid: 60a890914690c064d8f75e877025f2eb, type: 2}
-  contextOff: {fileID: 11400000, guid: c8f4195ab09ac5942870d0a64d3507a8, type: 2}
+  context: {fileID: 11400000, guid: 60a890914690c064d8f75e877025f2eb, type: 2}
   dialogBox: {fileID: 782017791}
   dialogText: {fileID: 2109627111}
   dialog: Watch out! Goblins!

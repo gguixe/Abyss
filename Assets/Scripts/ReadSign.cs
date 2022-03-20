@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ReadSign : MonoBehaviour
 {
-    public Signal contextOn; //Añadir clase superior con estas propiedades
-    public Signal contextOff;
+    public Signal context; //Añadir clase superior con estas propiedades
+    //public Signal contextOff;
 
     public GameObject dialogBox;
     public Text dialogText;
@@ -40,7 +40,7 @@ public class ReadSign : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            contextOn.Raise();
+            context.Raise();
             dialogActivation = true;
         }
     }
@@ -49,7 +49,7 @@ public class ReadSign : MonoBehaviour
     {
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            contextOff.Raise();
+            context.Raise();
             dialogActivation = false;
             dialogBox.SetActive(false);
         }
