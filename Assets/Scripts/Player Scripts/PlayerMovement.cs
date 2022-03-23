@@ -4,11 +4,11 @@ using UnityEngine;
 
 public enum PlayerState
 {
-    holster,
-    idle,
-    attack,
-    interact,
-    stagger
+    holster, //walking with no weapons
+    idle, //start as idle
+    attack, //attack is the standard walking
+    interact, //dialog or cutscene
+    stagger //stagger after knockoff
 }
 
 public class PlayerMovement : MonoBehaviour
@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     public FloatValue currentHealth;
     public Signal playerHealthSignal;
     public VectorValue startingPosition;
+
+    public Inventory playerInventory;
+    public SpriteRenderer receivedItemSprite;
 
     //public GameObject hitbox_right;
     //public GameObject hitbox_left; //Hitboxes activated in animation
@@ -47,6 +50,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Is the player in an interaction/cutscene
+        if(currentState == PlayerState.interact)
+        {
+            return;
+        }
+
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");   //Digital Value
         change.y = Input.GetAxisRaw("Vertical");     //Digital Value
@@ -66,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateAnimationAndMove();
         flip_sprite();
 
-        if (Input.GetButtonDown("Attack") && currentState == PlayerState.attack && currentState != PlayerState.stagger)
+        if (Input.GetButtonDown("Attack") && currentState == PlayerState.attack && currentState != PlayerState.stagger && currentState != PlayerState.interact)
         {
             StartCoroutine(AttackCo());
         }
@@ -117,6 +126,26 @@ public class PlayerMovement : MonoBehaviour
             mySpriteRenderer.flipX = false;  // flip the sprite
             animator.SetFloat("side", 0);
             weapon_sprite.sortingOrder = 2;
+        }
+    }
+
+    public void InteractAnimation() 
+    {
+        if(playerInventory.currentItem != null)
+        {
+            if (currentState != PlayerState.interact)
+            {
+                //animator.SetBool("receive item", true); //If wanted an animation
+                currentState = PlayerState.interact;
+                receivedItemSprite.sprite = playerInventory.currentItem.itemSprite;
+            }
+            else
+            {
+                //animator.SetBool("receive item", false); //If wanted an animation for receiving item
+                currentState = PlayerState.idle;
+                receivedItemSprite.sprite = null;
+                playerInventory.currentItem = null;
+            }
         }
     }
 

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: HealthLength
   m_EditorClassIdentifier: 
   initialValue: 3
+  RunTimeValue: 3
