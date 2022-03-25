@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goblin : Enemy
 {
-    private Rigidbody2D myRigidbody;
+    public Rigidbody2D myRigidbody;
     public Transform target;
     public float chaseRadius;
     public float attackRadius;
@@ -28,7 +28,7 @@ public class Goblin : Enemy
         CheckDistance();
     }
 
-    void CheckDistance()
+    public virtual void CheckDistance()
     {
         if(Vector3.Distance(target.position, transform.position) <= chaseRadius && Vector3.Distance(target.position, transform.position) > attackRadius)
         {
@@ -55,16 +55,16 @@ public class Goblin : Enemy
         }
     }
 
-    private void changeAnim(Vector2 direction)
+    public void changeAnim(Vector2 direction)
     {      
         if (direction.x > 0) //Derecha
         {
-            Debug.Log("Derecha");
+            //Debug.Log("Derecha");
             mySpriteRenderer.flipX = false;  // flip the sprite
         }
         else if (direction.x < 0) //Izquierda
         {
-            Debug.Log("Izquierda");
+            //Debug.Log("Izquierda");
             mySpriteRenderer.flipX = true;  // flip the sprite
         }
     }
